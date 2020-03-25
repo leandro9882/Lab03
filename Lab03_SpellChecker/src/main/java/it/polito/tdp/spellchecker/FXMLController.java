@@ -60,10 +60,11 @@ public class FXMLController {
     	while(s.hasMoreElements()) {
     		frase.add(s.nextToken());
     	}
-    	List<RichWord> checkWord=dict.spellCheckText(frase);
+    	List<RichWord> checkWord=dict.spellCheckTextDichotomic(frase);
+    	long finish= System.nanoTime();
     	this.txtRisposta.setText(dict.getParoleErrate(checkWord));
     	this.lblError.setText("The Text contains "+dict.getNumeroErrori(checkWord)+" errors");
-    	this.lblTime.setText("Spell check completed in 0.00"+((System.nanoTime()-start))+" seconds");
+    	this.lblTime.setText("Spell check completed in "+((finish-start)*0.000000001)+" seconds");
     }
 
     @FXML
